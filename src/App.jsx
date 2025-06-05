@@ -57,9 +57,9 @@ function App() {
       </header>
       <main className="flex-1 flex flex-col justify-between">
         <div className="grid grid-cols-3 gap-4 p-4 w-full">
-          <Boards type={'todo'} data={MOCK_DATA} />
-          <Boards type={'inprogress'} data={MOCK_DATA} />
-          <Boards type={'done'} data={MOCK_DATA} />
+          <Boards type={'todo'} />
+          <Boards type={'inprogress'} />
+          <Boards type={'done'} />
         </div>
         <Controller />
       </main>

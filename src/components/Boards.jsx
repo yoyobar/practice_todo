@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import BoardDetailModal from './BoardDetailModal';
+import { useBoardStore } from '../store';
 
 const typeToKorean = (type) => {
   switch (type) {
@@ -21,8 +22,10 @@ const typeToKorean = (type) => {
 //filteredData에 할당된 data를 필터링 하세요.
 //이후 Recoil의 useRecoilValue를 이용하여 Recoil의 상태를 가져오도록 수정합니다.
 
-const Boards = ({ type, data }) => {
-  const filteredData = data;
+const Boards = ({ type }) => {
+  const { boards } = useBoardStore();
+  const filteredData = boards.filter((item) => item.type === type);
+
   const [item, setItem] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,7 +33,6 @@ const Boards = ({ type, data }) => {
     setItem(item);
     setIsOpen(true);
   };
-
   const handleModalClose = () => {
     setItem(null);
     setIsOpen(false);
